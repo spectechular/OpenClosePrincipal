@@ -16,9 +16,7 @@ public class Menu implements IMenu {
             System.out.println("\t\tMenu\nItems on the menu are: ");
             for (String stringMenuItem : arrayMenuItems) {
 
-                System.out.println(itemsCounter);
-                System.out.println(".");
-                System.out.println(stringMenuItem);
+                System.out.println(itemsCounter + ". " + stringMenuItem);
                 itemsCounter++;
             }
         } catch (Exception e) {
@@ -41,7 +39,10 @@ public class Menu implements IMenu {
                 } catch (NumberFormatException numFormatE) {
                     System.out.println("Please enter valid input as single number");
                 }
-            } while (choice < 1 || choice > numMenuItems);
+            } while (choice < 0 || choice > numMenuItems);
+            if (choice == 0) {
+                return "cancel";
+            }
             return (arrayMenuItems[choice - 1]);
         } catch (Exception e) {
             System.out.println("Error getting customer item choice");
